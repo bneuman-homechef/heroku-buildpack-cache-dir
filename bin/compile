@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+# bin/compile <build-dir> <cache-dir> <env-dir>
+
+### Configure environment
+
+set -o errexit    # always exit on error
+set -o pipefail   # don't ignore exit codes when piping output
+
+BUILD_DIR=${1:-}
+CACHE_DIR=${2:-}
+ENV_DIR=${3:-}
+
+HEROKU_CACHE_INFO_DIR=$BUILD_DIR/tmp/heroku-cache-info
+HEROKU_CACHE_INFO_PATH=$HEROKU_CACHE_INFO_DIR/cache-path
+mkdir -p $HEROKU_CACHE_INFO_DIR
+echo $CACHE_DIR > $HEROKU_CACHE_INFO_PATH
+
+
+# DIGEST_FILENAME=last-compilation-digest-$RAILS_ENV
+# CACHE_PACK_DIR=$CACHE_DIR/webpacker-cache/packs
+# CACHE_DIGEST=$CACHE_DIR/$DIGEST_FILENAME
+
+# BUILD_PACK_DIR=$BUILD_DIR/public/packs
+# BUILD_DIGEST_DIR=$BUILD_DIR/tmp/cache/webpacker
+# BUILD_DIGEST=$BUILD_DIGEST_DIR/$DIGEST_FILENAME
+
+# MANIFEST=$BUILD_PACK_DIR/manifest.json
+
+# mkdir -p $CACHE_PACK_DIR
+
+# if [ -d "$CACHE_PACK_DIR" && -f "$CACHE_DIGEST" ]; then
+#   mkdir -p $BUILD_PACK_DIR
+#   mkdir -p $BUILD_DIGEST_DIR
+#   cp $CACHE_DIGEST $BUILD_DIGEST
+#   cp -R $CACHE_PACK_DIR/* $BUILD_PACK_DIR
+# fi

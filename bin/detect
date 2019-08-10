@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# bin/detect <build-dir>
+
+if [ -f $1/config/webpacker.yml ]; then
+  echo 'Webpacker cache: before step'
+  exit 0
+fi
+
+>&2 echo 'Webpacker cache: webpacker config not found in application root'
+exit 1
